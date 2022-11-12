@@ -12,7 +12,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     // Success
-    const SUCCESS        = 20000;
+    const SUCCESS                                   = 20000;
     const SUCCESS_VERIFY = 20001;
     const SUCCESS_APPLY  = 20002;
 
