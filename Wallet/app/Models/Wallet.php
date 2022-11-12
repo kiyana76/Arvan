@@ -6,6 +6,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ *
+ * @package App\Models\Wallet
+ *
+ * @property string $mobile
+ *
+ * @property int $balance
+ */
 class Wallet extends Model
 {
     use HasFactory;
