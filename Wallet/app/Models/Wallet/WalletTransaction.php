@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Wallet;
 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,10 +15,17 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $amount
  *
  * @property string $operation
+ *
+ * @property string $agentable_type
+ * @property int    $agentable_id
+ *
+ * @property WalletTransaction $walletTransaction
  */
 class WalletTransaction extends Model
 {
     use HasFactory;
+
+    protected $connection = 'mysql_wallet';
 
     const OPERATION_INCREASE = 'increase';
     const OPERATION_DECREASE = 'decrease';
@@ -27,29 +34,27 @@ class WalletTransaction extends Model
         self::OPERATION_DECREASE
     ];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+
     protected $fillable = [
         'amount',
         'operation',
+        'agentable_type',
+        'agentable_id'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+
     protected $hidden = [
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+
     protected $casts = [
     ];
+
+    // ************************************* Relations ****************************
+    public function wallet()
+    {
+        return $this->belongsTo(Wallet::class);
+    }
+    // ************************************* Attributes ***************************
+    // ************************************* Methods ******************************
 }

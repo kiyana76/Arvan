@@ -1,22 +1,15 @@
 <?php
 
-namespace App\Models;
-
+namespace App\Models\User;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-/**
- *
- * @package App\Models\Wallet
- *
- * @property string $mobile
- *
- * @property int $balance
- */
-class Wallet extends Model
+class User extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -24,8 +17,9 @@ class Wallet extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'mobile',
-        'balance',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -34,6 +28,8 @@ class Wallet extends Model
      * @var array<int, string>
      */
     protected $hidden = [
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -42,5 +38,6 @@ class Wallet extends Model
      * @var array<string, string>
      */
     protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 }

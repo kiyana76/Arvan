@@ -12,14 +12,16 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     // Success
-    const SUCCESS        = 20000;
-    const SUCCESS_VERIFY = 20001;
-    const SUCCESS_APPLY  = 20002;
+    const SUCCESS          = 20000;
+    const SUCCESS_DEPOSIT  = 20001;
+    const SUCCESS_WITHDRAW = 20002;
+    const ERROR_DEPOSIT    = 20003;
+    const ERROR_WITHDRAW   = 20004;
 
     protected function apiResponse($data, $code = 20000, $message = '')
     {
         if (!$message) {
-            $key     = "code_responses.{$code}";
+            $key     = "code_response.$code";
             $message = trans($key);
 
             if ($key == $message) {
