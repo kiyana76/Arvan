@@ -1,8 +1,7 @@
 <?php
 
+
 use App\Http\Controllers\Controller;
-
-
 return [
     Controller::SUCCESS => '',
     Controller::SUCCESS_DEPOSIT  => 'واریز با موفقیت انجام شد.',

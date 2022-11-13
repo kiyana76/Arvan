@@ -13,7 +13,7 @@ class CreateWalletsTable extends Migration
      */
     public function up()
     {
-        Schema::create('wallets', function (Blueprint $table) {
+        Schema::connection('mysql_wallet')->create('wallets', function (Blueprint $table) {
             $table->id();
             $table->string('mobile')->unique();
             $table->bigInteger('balance')->default(0);
@@ -28,6 +28,6 @@ class CreateWalletsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wallets');
+        Schema::connection('mysql_wallet')->dropIfExists('wallets');
     }
 }

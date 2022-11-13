@@ -14,7 +14,7 @@ class CreateWalletTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('wallet_transactions', function (Blueprint $table) {
+        Schema::connection('mysql_wallet')->create('wallet_transactions', function (Blueprint $table) {
             $table->id();
 
             $table->bigInteger('wallet_id')->unsigned();
@@ -36,6 +36,6 @@ class CreateWalletTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wallet_transactions');
+        Schema::connection('mysql_wallet')->dropIfExists('wallet_transactions');
     }
 }
