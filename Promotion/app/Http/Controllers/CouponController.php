@@ -12,9 +12,12 @@ class CouponController extends Controller
 {
     public function use(UseRequest $request)
     {
-        $coupon = Coupon::where('code', $request->code)->first();
+        $coupon = Coupon::query()
+            ->where('code', $request->code)
+            ->whereNull('mobile')
+            ->first();
         if (!$coupon)
-            return self::apiResponse('', 20004);
+            return self::apiResponse('', self::CODE_NOT_FOUND);
 
 
         $couponRepository = new CouponRepository($coupon, $request->mobile);
