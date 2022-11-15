@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 return [
     Controller::SUCCESS_APPLY            => 'کد با موفقیت اعمال شد',
-    Controller::SUCCESS                  => 'عملیات با موفقیت اعمال شد',
+    Controller::SUCCESS                  => 'عملیات با موفقیت انجام شد',
     Controller::FAILED                   => 'عملیات با خطا مواجه شد.',
     Controller::CODE_NOT_FOUND           => 'کد موردنظر یافت نشد.',
     Controller::ERROR_COUPON_INACTIVE    => 'کد مورد نظر فعال نمی‌باشد.',
