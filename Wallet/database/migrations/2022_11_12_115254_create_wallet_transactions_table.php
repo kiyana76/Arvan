@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Wallet\WalletTransaction;
+use App\Models\Wallets\WalletTransaction;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

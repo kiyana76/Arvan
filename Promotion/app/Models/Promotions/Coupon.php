@@ -12,33 +12,23 @@ use PHPUnit\Util\Json;
  *
  * @package App\Models\Promotion
  *
+ * @property integer $id
  * @property string $code
  *
  * @property integer $coupon_group_id
- * @property CouponGroup $couponGroup
+ * @property CouponGroup $CouponGroup
  *
- * @property int $used_count
+ * @property string $mobile
  */
 class Coupon extends Model
 {
     use HasFactory;
 
-    const STATUS_ACTIVE   = 'active';
-    const STATUS_INACTIVE = 'inactive';
-
-    protected $connection = '';
+    protected $connection = 'mysql_promotion';
 
     protected $fillable = [
-        'title',
-        'prefix',
-        'length',
-        'unique_length',
-        'max_count',
-        'used_count',
-        'start_at',
-        'end_at',
-        'effects',
-        'status'
+        'code',
+        'mobile'
     ];
 
 
@@ -46,7 +36,6 @@ class Coupon extends Model
     ];
 
     protected $casts = [
-        'effects' => 'array'
     ];
 
     // ************************************* Relations ****************************

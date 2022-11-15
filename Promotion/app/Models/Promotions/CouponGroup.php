@@ -39,10 +39,24 @@ class CouponGroup extends Model
         self::STATUS_INACTIVE
     ];
 
-    protected $connection = '';
+    const KIND_PUBLIC  = 'public';
+    const KIND_PRIVATE = 'private';
+
+    const KINDS = [
+        self::KIND_PRIVATE,
+        self::KIND_PUBLIC
+    ];
+
+    const EFFECT_INCREASE_CREDIT = 'increase_credit';
+    const EFFECTS = [
+        self::EFFECT_INCREASE_CREDIT
+    ];
+
+    protected $connection = 'mysql_promotion';
 
     protected $fillable = [
         'title',
+        'kind',
         'prefix',
         'length',
         'unique_length',

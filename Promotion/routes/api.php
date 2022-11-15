@@ -14,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/promotion/coupon/use', 'CouponController@use');
+Route::get('/promotion/coupon/used_coupon_list', 'CouponController@getUsedCouponList');

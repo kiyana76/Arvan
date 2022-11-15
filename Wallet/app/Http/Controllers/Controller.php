@@ -15,8 +15,8 @@ class Controller extends BaseController
     const SUCCESS          = 20000;
     const SUCCESS_DEPOSIT  = 20001;
     const SUCCESS_WITHDRAW = 20002;
-    const ERROR_DEPOSIT    = 20003;
-    const ERROR_WITHDRAW   = 20004;
+    const ERROR_DEPOSIT    = 10003;
+    const ERROR_WITHDRAW   = 10004;
 
     protected function apiResponse($data, $code = 20000, $message = '')
     {

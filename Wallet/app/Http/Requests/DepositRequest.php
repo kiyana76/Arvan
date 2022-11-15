@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Request;
+namespace App\Http\Requests;
 
 
 use App\Rules\MobileValidation;
@@ -49,8 +49,8 @@ class DepositRequest extends FormRequest
             'agent' => [
                 'required',
                 Rule::in([
-                    'App\Models\User\User',
-                    'App\Models\Promotion\Coupon'
+                    'App\Models\Users\User',
+                    'App\Models\Promotions\Coupon'
                 ])
             ],
             'agent_id' => [

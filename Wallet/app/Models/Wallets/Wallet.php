@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Wallet;
+namespace App\Models\Wallets;
 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  *
- * @package App\Models\Wallet
+ * @package App\Models\Wallets\Wallet
  *
  * @property string $mobile
  *

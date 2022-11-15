@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/wallet/deposit', 'WalletController@deposit');
+Route::get('/wallet/withdraw', 'WalletController@withdraw');
+Route::get('/wallet/charge', 'WalletController@charge');

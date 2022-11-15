@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Promotion;
+namespace App\Models\Promotions;
 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  *
- * @package App\Models\Coupon
+ * @package App\Models\Promotions\Coupon
  *
  * @property string $code
  *

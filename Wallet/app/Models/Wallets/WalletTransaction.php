@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Wallet;
+namespace App\Models\Wallets;
 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * Class WalletTransaction
  *
- * @package App\Models\WalletTransaction
+ * @package App\Models\Wallets\WalletTransaction
  *
  * @property integer $amount
  *

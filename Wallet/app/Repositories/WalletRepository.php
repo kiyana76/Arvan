@@ -2,16 +2,20 @@
 
 namespace App\Repositories;
 
-use App\Models\Wallet\Wallet;
-use App\Models\Wallet\WalletTransaction;
+use App\Http\Controllers\Controller;
+use App\Models\Wallets\Wallet;
+use App\Models\Wallets\WalletTransaction;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class WalletRepository
 {
+    /**
+     * @var Wallet
+     */
     private $wallet;
 
-    public function __construct($wallet)
+    public function __construct(Wallet $wallet)
     {
         $this->wallet = $wallet;
     }
@@ -53,13 +57,43 @@ class WalletRepository
             $this->wallet->save();
 
             DB::connection('mysql_wallet')->commit();
-            return true;
+            return Controller::SUCCESS;
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
 
 
             DB::connection('mysql_wallet')->rollBack();
-            return false;
+            return Controller::SUCCESS_DEPOSIT;
         }
+    }
+
+    public function withdraw($amount, $agent, $agent_id)
+    {
+        DB::connection('mysql_wallet')->beginTransaction();
+        try {
+            $walletTransaction                 = new WalletTransaction();
+            $walletTransaction->amount         = $amount;
+            $walletTransaction->operation      = WalletTransaction::OPERATION_DECREASE;
+            $walletTransaction->agentable_type = $agent;
+            $walletTransaction->agentable_id   = $agent_id;
+            $walletTransaction->wallet()->associate($this->wallet);
+            $walletTransaction->save();
+
+            $this->wallet->balance -= $amount;
+            $this->wallet->save();
+
+            DB::connection('mysql_wallet')->commit();
+            return Controller::SUCCESS;
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+
+
+            DB::connection('mysql_wallet')->rollBack();
+            return Controller::ERROR_WITHDRAW;
+        }
+    }
+
+    public function charge() {
+        return $this->wallet->balance;
     }
 }
